@@ -22,7 +22,6 @@ class Uart:
     def enviar(self, msg):
         if self.check() == 1:
             self.ser.write(msg)
-            print('Comando enviado com sucesso!')
         else:
             print('Falha ao enviar comando!') 
 

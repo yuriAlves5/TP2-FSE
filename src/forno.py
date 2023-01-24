@@ -22,6 +22,7 @@ class Forno:
     def receber_comando(self):
         comando = self.modbus.envia_comando('solicita_comandos', None)
         resposta = self.uart.envia_recebe(comando)
+        print(resposta)
         return self.modbus.recebe_comando(resposta)
 
 

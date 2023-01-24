@@ -9,7 +9,7 @@ class Uart:
         self.conectado = False
 
     def check(self):
-        if self.serial.is_open and self.conectado:
+        if self.serial.is_open and self.conectado == False:
             print('Conexão estabelecida com sucesso!')
             self.conectado = True
             return 1

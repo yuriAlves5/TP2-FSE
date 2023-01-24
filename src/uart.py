@@ -6,7 +6,7 @@ class Uart:
     def __init__(self):
         self.port = '/dev/serial0'
         self.baudrate = 9600
-        self.timeout = 1
+        self.timeout = 0.1
         self.ser = serial.Serial(self.port, self.baudrate, self.timeout)
         self.check()
 

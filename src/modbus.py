@@ -65,7 +65,7 @@ class Modbus:
                 else:
                     return msg[2],struct.unpack("<i", data)[0]
             else:
-                raise Exception('CRC inválido')
+                print("crc errado")
 
         else:
             return None, None

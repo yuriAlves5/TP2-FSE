@@ -6,7 +6,7 @@ if __name__ == '__main__':
     menu = Menu()
     forno = Forno()
     option = 0
-    while option != 3:
+    while True:
         option = menu.print_dashboard()
         if option == 1:
             while True:
@@ -21,7 +21,7 @@ if __name__ == '__main__':
                     forno.Cancela_processo()
                 time.sleep(1)
         else:
-            option = 3
+            break
 
 
 # #loop

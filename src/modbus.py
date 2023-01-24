@@ -56,10 +56,12 @@ class Modbus:
             if crc_verf == msg[7:9]:
                 if msg[2] == 0xC1 or msg[2] == 0xC2:
                     z = round(struct.unpack('>f', data)[0],2)
+                    print ('z aqui')
                     print (z)
                     return z
                 if msg[2] == 0xC3:
                     x = struct.unpack("<i", data)[0]
+                    print ('x aqui')
                     print (x)
                     return self.comandos.get(struct.unpack("<i", data)[0])
 

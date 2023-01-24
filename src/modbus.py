@@ -52,6 +52,7 @@ class Modbus:
     def recebe_comando(self, msg):
         if len(msg) == 9:
             data = msg[3:7]
+            print(data)
             crc_verf = calcula_crc(msg[0:7])
             if crc_verf == msg[7:9]:
                 if msg[2] == 0xC1 or msg[2] == 0xC2:

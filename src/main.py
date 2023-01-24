@@ -11,6 +11,7 @@ if __name__ == '__main__':
         if option == '1':
             while True:
                 comando = forno.receber_comando()
+                print(comando)
                 if comando == 'Liga_Forno':
                     forno.Liga_Forno()
                 elif comando == 'Desliga_Forno':

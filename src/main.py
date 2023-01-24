@@ -9,7 +9,7 @@ if __name__ == '__main__':
     while True:
         option = menu.print_dashboard()
         print(option)
-        if option == 1:
+        if option == '1':
             while True:
                 comando = forno.receber_comando()
                 if comando == 'Liga_Forno':

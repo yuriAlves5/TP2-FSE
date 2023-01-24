@@ -42,7 +42,6 @@ class Modbus:
                     valor = struct.pack("<i", valor)
                     msg_bytes = msg_bytes + valor
                 elif type(valor) == float:
-                    valor = round(valor,2)
                     valor = struct.pack(">f", valor)
                     msg_bytes = msg_bytes + valor
             crc = calcula_crc(msg_bytes)

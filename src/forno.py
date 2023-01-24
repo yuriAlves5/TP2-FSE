@@ -99,6 +99,7 @@ class Forno:
         code = self.uart.envia_recebe(self.modbus.envia_comando('temperatura_referencia', None))
         print('Temperatura de referencia:')
         self.temperatura_referencia = self.modbus.recebe_comando(code)
+        self.temperatura_ambiente = 50
 
 
 

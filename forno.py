@@ -19,6 +19,14 @@ class Forno:
         self.aquecer = 0
         
 
+    def receber_comando(self):
+        comando = self.modbus.envia_comando('solicita_comandos', None)
+        self.uart.enviar(comando)
+        sleep(0.1)
+        resposta = self.uart.receber()
+        return self.modbus.recebe_comando(resposta)
+
+
         
     def Liga_Forno(self):
         self.uart.check()

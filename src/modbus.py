@@ -51,18 +51,19 @@ class Modbus:
 
     def recebe_comando(self, msg):
         if len(msg) == 9:
+            data, sub_code = msg[3:7], msg[2]
             crc_verf = calcula_crc(msg[0:7])
             if crc_verf == msg[7:9]:
                 if msg[2] == 0xC1 or msg[2] == 0xC2:
-                    return struct.unpack('>f', msg[3:7])[0]
+                    return struct.unpack('>f', data)[0]
 
                 if msg[2] == 0xC3:
-                    comando = struct.unpack("<i", msg[3:7])[0]
+                    comando = struct.unpack("<i", data)[0]
                     print(comando)
                     return self.comandos[comando]
 
                 else:
-                    return msg[2],struct.unpack("<i", msg[3:7])[0]
+                    return msg[2],struct.unpack("<i", data)[0]
             else:
                 raise Exception('CRC inválido')
 

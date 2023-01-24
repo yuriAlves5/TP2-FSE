@@ -75,8 +75,11 @@ class Forno:
 
     def update_geral(self):
         self.Update_temperatura_interna()
+        sleep(0.1)
         self.Update_temperatura_referencia()
+        sleep(0.1)
         self.Update_temperatura_ambiente()
+        sleep(0.1)
             
 
     def Update_temperatura_ambiente(self):

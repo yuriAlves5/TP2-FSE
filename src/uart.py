@@ -4,10 +4,7 @@ import time
 
 class Uart:
     def __init__(self):
-        self.port = '/dev/serial0'
-        self.baudrate = 9600
-        self.timeout = 0.1
-        self.ser = serial.Serial(self.port, self.baudrate, self.timeout)
+        self.ser = serial.Serial("/dev/serial0", 9600, timeout=0.1)
         self.check()
 
     def check(self):

@@ -65,7 +65,7 @@ class Forno:
 
 
     def Cancela_processo(self):
-        self.uart.enviar(Modbus.envia_comando('envia_sinal_funcionamento_desligado', None))
+        self.uart.enviar(self.modbus.envia_comando('envia_sinal_funcionamento_desligado', None))
         self.aquecer = 0
         print('Cancela processo!')
 
@@ -80,14 +80,17 @@ class Forno:
 
     def Update_temperatura_ambiente(self):
         self.temperatura_ambiente = round(self.bme.get_internal_temperature(),2)
+        print('update temperatura interna' + str(self.temperatura_ambiente))
         self.uart.enviar(self.modbus.envia_comando('envia_tempertura_ambiente', self.temperatura_ambiente))
 
     def Update_temperatura_interna(self):
+        print('update temperatura interna' + str(self.temperatura_interna))
         code = self.uart.envia_recebe(self.modbus.envia_comando('temperatura_interna', None))
         self.temperatura_interna = self.modbus.recebe_comando(code)
 
         
     def Update_temperatura_referencia(self):
+        print('update temperatura interna' + str(self.temperatura_referencia))
         code = self.uart.envia_recebe(self.modbus.envia_comando('temperatura_referencia', None))
         self.temperatura_referencia = self.modbus.recebe_comando(code)
 

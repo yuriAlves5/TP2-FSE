@@ -39,6 +39,7 @@ class Uart:
 
 
     def receber(self):
+        sleep(0.1)
         buffer = self.serial.read(9)
         return buffer
         

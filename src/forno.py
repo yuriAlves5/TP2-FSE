@@ -95,9 +95,7 @@ class Forno:
     def Update_temperatura_referencia(self):
         code = self.uart.envia_recebe(self.modbus.envia_comando('temperatura_referencia', None))
         print('Temperatura de referencia:')
-        print(code)
-        if code != None:
-            self.temperatura_referencia = self.modbus.recebe_comando(code)
+        self.temperatura_referencia = self.modbus.recebe_comando(code)
 
 
 

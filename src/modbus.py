@@ -1,6 +1,6 @@
 
 import struct
-from crc16 import calculate_crc16
+from crc16 import calcula_crc
 #8640
 
 class Modbus:
@@ -44,14 +44,14 @@ class Modbus:
                 elif type(valor) == float:
                     valor = struct.pack(">f", valor)
                     msg_bytes = msg_bytes + valor
-            crc = calculate_crc16(msg_bytes)
+            crc = calcula_crc(msg_bytes)
             return msg_bytes + crc
         else:
             return None
 
     def recebe_comando(self, msg):
         if len(msg) == 9:
-            crc_verf = calculate_crc16(msg[0:7])
+            crc_verf = calcula_crc(msg[0:7])
             if crc_verf == msg[7:9]:
                 if msg[2] == 0xC1 or msg[2] == 0xC2:
                     return struct.unpack('>f', msg[3:7])[0]

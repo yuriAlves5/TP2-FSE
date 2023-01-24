@@ -59,7 +59,7 @@ class Modbus:
 
                 if msg[2] == 0xC3:
                     comando = struct.unpack("<i", data)[0]
-                    print(comando)
+                    print(comando,sub_code)
                     return self.comandos[comando]
 
                 else:

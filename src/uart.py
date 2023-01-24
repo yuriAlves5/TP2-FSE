@@ -1,6 +1,6 @@
 import serial
 import time
-import crc
+
 
 class Uart:
     def __init__(self):

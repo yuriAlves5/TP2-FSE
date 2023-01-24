@@ -20,7 +20,7 @@ class PID:
 
     def control(self, medida_temp):
 
-        erro = self.reference - medida_temp
+        erro = self.referencia - medida_temp
 
         self.erro_total += erro
 

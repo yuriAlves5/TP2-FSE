@@ -2,6 +2,11 @@ from menu import Menu
 from modbus import Modbus
 
 
+#loop
+    #menu 1
+       #cada 500ms ler o commando
+         #depois de 1 segundo chamar control
+
 menu = Menu()
 modbus = Modbus()
 

@@ -26,6 +26,7 @@ class Uart:
         else:
             print('Falha ao enviar comando!') 
 
+
     def receber(self):
         if self.check() == 1:
             return self.ser.read(9)

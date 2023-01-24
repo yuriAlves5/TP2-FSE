@@ -36,6 +36,13 @@ class Modbus:
     def envia_comando(self, comando, valor):
         if comando in self.controles:
             msg_bytes = bytes(self.controles[comando])
+            if valor:
+                if type(valor) == int:
+                    valor = struct.pack("<i", valor)
+                    msg_bytes = msg_bytes + valor
+                elif type(valor) == float:
+                    valor = struct.pack(">f", valor)
+                    msg_bytes = msg_bytes + valor
             crc = calcula_crc(msg_bytes)
             return msg_bytes + crc
         else:
@@ -46,7 +53,7 @@ class Modbus:
             crc_verf = calcula_crc(msg[0:7])
             if crc_verf == msg[7:9]:
                 if msg[2] == 0xC1 or msg[2] == 0xC2:
-                    return msg[2],struct.unpack('>f', msg[3:7])[0]
+                    return struct.unpack('>f', msg[3:7])[0]
 
                 if msg[2] == 0xC3:
                     comando = struct.unpack("<i", msg[3:7])[0]

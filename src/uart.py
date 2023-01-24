@@ -6,12 +6,14 @@ class Uart:
     def __init__(self):
         self.serial = serial.Serial("/dev/serial0", 9600, timeout=0.1)
         self.check()
+        self.conectado = False
 
     def check(self):
-        if self.serial.is_open:
+        if self.serial.is_open and self.conectado:
             print('Conexão estabelecida com sucesso!')
+            self.conectado = True
             return 1
-        else:
+        if self.conectado == False:
             print('Falha ao estabelecer conexão!')
             return 0
 

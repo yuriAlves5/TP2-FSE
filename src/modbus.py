@@ -5,11 +5,12 @@ from crc16 import calcula_crc
 
 class Modbus:
     def __init__(self):
+        registration_number = [8, 6, 4, 0]
         self.controles = {
             #solicitação de leitura
             'temperatura_interna': [0x01,0x23,0xC1,8,6,4,0],
             'temperatura_referencia': [0x01,0x23,0xC2,8,6,4,0],
-            'solicita_comandos': [0x01,0x23,0xC3,8,6,4,0],
+            'solicita_comandos': [0x01, 0x23, 0xC3, *registration_number],
 
             #envia comandos
             'envia_sinal_controle': [0x01,0x16,0xD1,8,6,4,0],

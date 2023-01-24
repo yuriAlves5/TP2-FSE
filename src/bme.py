@@ -10,8 +10,8 @@ class BME:
         self.calibration_params = bme280.load_calibration_params(self.bus, self.address)
 
     def get_internal_temperature(self):
-        data = bme280.sample(self.bus, self.address, self.calibration_params)
-        return data.temperature
+        self.data = bme280.sample(self.bus, self.address, self.calibration_params)
+        return self.data.temperature
 
     def close(self):
         self.bus.close()

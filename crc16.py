@@ -36,7 +36,7 @@ def crc(crc,data):
 
 
 def calcula_crc(data):
-    crc = 0
-    for i in range(0 , len(data)):
-        crc16 = crc(crc,data[i])
-    return crc
+    crc16 = 0
+    for i in range(0,len(data)):
+        crc16 = crc(crc16,data[i])
+    return crc16.to_bytes(2, byteorder='big')

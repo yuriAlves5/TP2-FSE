@@ -59,6 +59,7 @@ class Forno:
 
     def Aquecendo(self):
         if self.estado == 1 and self.aquecer == 1:
+            print('Aquecendo...')
             self.update_geral()
             self.pid.atualiza_referencia(self.temperatura_referencia)
             sinal = self.pid.control(self.temperatura_interna)

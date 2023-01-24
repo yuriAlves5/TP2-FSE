@@ -91,8 +91,7 @@ class Forno:
     def Update_temperatura_interna(self):
         self.uart.enviar(self.modbus.envia_comando('temperatura_interna', None))
         code = self.uart.recebe()
-        if code != None:
-            self.temperatura_interna = self.modbus.recebe_comando(code)
+        self.temperatura_interna = self.modbus.recebe_comando(code)
 
 
         

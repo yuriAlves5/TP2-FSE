@@ -64,6 +64,7 @@ class Forno:
             sinal = self.pid.control(self.temperatura_interna)
             self.pwm.aplicar_sinal(sinal)
             self.uart.enviar(self.modbus.envia_comando('envia_sinal_controle', sinal))
+            self.Controle()
 
 
 

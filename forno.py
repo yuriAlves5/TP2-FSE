@@ -21,9 +21,7 @@ class Forno:
 
     def receber_comando(self):
         comando = self.modbus.envia_comando('solicita_comandos', None)
-        self.uart.enviar(comando)
-        sleep(0.1)
-        resposta = self.uart.receber()
+        resposta = self.uart.envia_recebe(comando)
         return self.modbus.recebe_comando(resposta)
 
 
@@ -85,10 +83,13 @@ class Forno:
         self.uart.enviar(self.modbus.envia_comando('envia_tempertura_ambiente', self.temperatura_ambiente))
 
     def Update_temperatura_interna(self):
-        self.uart.enviar(self.modbus.envia_comando('temperatura_interna', None))
-        self.temperatura_interna = self.modbus.recebe_comando(self.uart.receber())
+        code = self.uart.envia_recebe(self.modbus.envia_comando('temperatura_interna', None))
+        self.temperatura_interna = self.modbus.recebe_comando(code)
+
         
     def Update_temperatura_referencia(self):
-        self.uart.enviar(self.modbus.envia_comando('temperatura_referencia', None))
-        self.temperatura_referencia = self.modbus.recebe_comando(self.uart.receber())
+        code = self.uart.envia_recebe(self.modbus.envia_comando('temperatura_referencia', None))
+        self.temperatura_referencia = self.modbus.recebe_comando(code)
+
+
         

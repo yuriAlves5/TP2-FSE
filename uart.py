@@ -19,6 +19,21 @@ class Uart:
             return 0
 
 
+
+    def envia_recebe(self, msg):
+        resposta = None
+        tentativas = 0
+        self.enviar(msg)
+        while not resposta and tentativas < 4:
+            try:
+                resposta = self.receber()
+                if resposta != None:
+                    return resposta
+                else:
+                    tentativas = tentativas + 1
+            except Exception as e:
+                print(e)
+
     def enviar(self, msg):
         if self.check() == 1:
             self.ser.write(msg)

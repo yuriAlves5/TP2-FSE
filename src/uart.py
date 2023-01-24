@@ -8,7 +8,7 @@ class Uart:
         self.check()
 
     def check(self):
-        if self.ser.isOpen():
+        if self.serial.isOpen():
             return 1
         else:
             print('Falha ao estabelecer conexão!')

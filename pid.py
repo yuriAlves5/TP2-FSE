@@ -18,9 +18,9 @@ class PID:
     def atualiza_referencia(self, referencia):
         self.referencia = referencia
 
-    def control(self, actual_measure):
+    def control(self, medida_temp):
 
-        erro = self.reference - actual_measure
+        erro = self.reference - medida_temp
 
         self.erro_total += erro
 
@@ -31,15 +31,15 @@ class PID:
 
         delta_error = erro - self.erro_anterior
         control_signal = (
-            (self.Kp * erro)
-            + (self.Ki * self.T * self.erro_total)
-            + (self.Kd / self.T * delta_error)
+            (self.Kp * erro) + (self.Ki * self.T * self.erro_total) + (self.Kd / self.T * delta_error)
         )
 
         if control_signal >= self.control_signal_MAX:
             control_signal = self.control_signal_MAX
+
         elif control_signal <= self.control_signal_MIN:
             control_signal = self.control_signal_MIN
+
         if control_signal < 0 and control_signal > -40:
             control_signal = -40
 

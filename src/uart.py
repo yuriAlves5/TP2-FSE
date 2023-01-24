@@ -20,6 +20,7 @@ class Uart:
         resposta = None
         tentativas = 0
         self.enviar(msg)
+        print(msg)
         while not resposta and tentativas < 4:
             try:
                 resposta = self.receber()

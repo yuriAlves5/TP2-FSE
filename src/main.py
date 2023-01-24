@@ -8,7 +8,6 @@ if __name__ == '__main__':
     option = 0
     while True:
         option = menu.print_dashboard()
-        print(option)
         if option == '1':
             while True:
                 comando = forno.receber_comando()

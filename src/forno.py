@@ -50,6 +50,7 @@ class Forno:
             self.uart.enviar(self.modbus.envia_comando('envia_sinal_funcionamento_ligado', None))
             self.aquecer = 1
             print('Inicia aquecimento!')
+            self.Controle()
         
     def Controle(self):
         if self.estado == 1 and self.aquecer == 1:

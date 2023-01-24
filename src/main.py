@@ -17,9 +17,12 @@ if __name__ == '__main__':
                     forno.Desliga_Forno()
                 elif comando == 'Inicia_aquecimento':
                     forno.Inicia_aquecimento()
+                    forno.update_geral()
+                    forno.Controle()
                 elif comando == 'Cancela_processo':
                     forno.Cancela_processo()
                 time.sleep(1)
+                
         else:
             break
 

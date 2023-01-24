@@ -10,7 +10,6 @@ class Uart:
 
     def check(self):
         if self.serial.is_open:
-            print('Conexão estabelecida com sucesso!')
             return 1
         else:
             print('Falha ao estabelecer conexão!')
@@ -25,7 +24,6 @@ class Uart:
         while not resposta and tentativas < 4:
             try:
                 resposta = self.receber()
-                print(resposta)
                 if resposta != None:
                     return resposta
                 else:

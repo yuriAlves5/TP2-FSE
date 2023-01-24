@@ -81,19 +81,19 @@ class Forno:
 
     def Update_temperatura_ambiente(self):
         self.temperatura_ambiente = round(self.bme.get_internal_temperature(),2)
-        print('Update_temperatura_ambiente' + str(self.temperatura_ambiente))
         self.uart.enviar(self.modbus.envia_comando('envia_tempertura_ambiente', self.temperatura_ambiente))
+        print('Update_temperatura_ambiente ' + str(self.temperatura_ambiente))
 
     def Update_temperatura_interna(self):
-        print('Update_temperatura_interna' + str(self.temperatura_interna))
         code = self.uart.envia_recebe(self.modbus.envia_comando('temperatura_interna', None))
         self.temperatura_interna = self.modbus.recebe_comando(code)
+        print('Update_temperatura_interna ' + str(self.temperatura_interna))
 
         
     def Update_temperatura_referencia(self):
-        print('Update_temperatura_referencia' + str(self.temperatura_referencia))
         code = self.uart.envia_recebe(self.modbus.envia_comando('temperatura_referencia', None))
         self.temperatura_referencia = self.modbus.recebe_comando(code)
+        print('Update_temperatura_referencia ' + str(self.temperatura_referencia))
 
 
         

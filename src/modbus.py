@@ -52,14 +52,15 @@ class Modbus:
     def recebe_comando(self, msg):
         if len(msg) == 9:
             data = msg[3:7]
-            print(data)
             crc_verf = calcula_crc(msg[0:7])
             if crc_verf == msg[7:9]:
                 if msg[2] == 0xC1 or msg[2] == 0xC2:
-                    return round(struct.unpack('>f', data)[0],2)
-
+                    z = round(struct.unpack('>f', data)[0],2)
+                    print (z)
+                    return z
                 if msg[2] == 0xC3:
                     x = struct.unpack("<i", data)[0]
+                    print (x)
                     return self.comandos.get(struct.unpack("<i", data)[0])
 
                 else:

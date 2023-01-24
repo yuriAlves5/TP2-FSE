@@ -50,6 +50,7 @@ class Forno:
             self.uart.enviar(self.modbus.envia_comando('envia_sinal_funcionamento_ligado', None))
             self.aquecer = 1
             print('Inicia aquecimento!')
+            
 
         
     def Controle(self):
@@ -73,10 +74,9 @@ class Forno:
 
 
     def update_geral(self):
-        if self.estado == 1:
-            self.Update_temperatura_interna()
-            self.Update_temperatura_referencia()
-            self.Update_temperatura_ambiente()
+        self.Update_temperatura_interna()
+        self.Update_temperatura_referencia()
+        self.Update_temperatura_ambiente()
             
 
     def Update_temperatura_ambiente(self):
@@ -96,6 +96,7 @@ class Forno:
         
     def Update_temperatura_referencia(self):
         code = self.uart.envia_recebe(self.modbus.envia_comando('temperatura_referencia', None))
+        print(code)
         if code != None:
             self.temperatura_referencia = self.modbus.recebe_comando(code)
 

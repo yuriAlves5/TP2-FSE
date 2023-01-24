@@ -20,7 +20,7 @@ if __name__ == '__main__':
                     forno.Inicia_aquecimento()
                 elif comando == 'Cancela_processo':
                     forno.Cancela_processo()
-                time.sleep(1)
+                time.sleep(2)
         else:
             break
 

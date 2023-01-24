@@ -1,5 +1,5 @@
 import serial
-import time
+from time import sleep
 
 
 class Uart:
@@ -42,8 +42,9 @@ class Uart:
 
 
     def receber(self):
-        if self.check() == 1:
-            return self.serial.read(9)
+        sleep(0.1)
+        buffer = self.serial.read(9)
+        return buffer
         
 
     def fechar(self):

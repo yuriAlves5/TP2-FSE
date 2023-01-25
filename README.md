@@ -5,11 +5,17 @@ smbus2
 bme280
 
 Com os comandos 
+
+```bash
 pip3 install smbus2
 pip3 install RPi.bme280
-
-após é entrar na pasta "src"
+pip3 install pyserial
+pip3 install RPi.GPIO
+```
+após é entrar na pasta `src`
 
 e rodar com 
 
 Python3 main.py
+
+link YouTube https://youtu.be/ncO2u4Cc6MM
